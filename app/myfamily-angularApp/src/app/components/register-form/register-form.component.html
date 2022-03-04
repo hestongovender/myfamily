@@ -1,0 +1,161 @@
+<mat-horizontal-stepper linear>
+  <mat-step [stepControl]="profileForm" [editable]="'Disable edit mode'">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmitProfile()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Enter Profile Details</mat-card-title>
+          <mat-card-subtitle>
+            <mat-error *ngIf="error">{{error}}</mat-error>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Firstname" formControlName="firstname">
+                <mat-error *ngIf="profileForm.controls['firstname'].hasError('required')">
+                  Firstname is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Surname" formControlName="surname">
+                <mat-error *ngIf="profileForm.controls['surname'].hasError('required')">
+                  Surname is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Maiden Name" formControlName="maidenName">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="identityNumber" formControlName="identityNumber">
+                <mat-error *ngIf="profileForm.controls['identityNumber'].hasError('required')">
+                  identityNumber is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-radio-group formControlName="gender">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-error *ngIf="profileForm.controls['gender'].hasError('required')">
+                  Gender is <strong>required</strong>
+                </mat-error>
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="emailAddress" formControlName="emailAddress">
+                <mat-error *ngIf="profileForm.controls['emailAddress'].hasError('required')">
+                  E-Mail address is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="profileForm.controls['emailAddress'].hasError('email')">
+                  E-Mail address is invalid
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="cellphoneNumber" formControlName="cellphoneNumber">
+                <mat-error *ngIf="profileForm.controls['cellphoneNumber'].hasError('required')">
+                  cellphoneNumber is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="homeNumber" formControlName="homeNumber">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="workNumber" formControlName="workNumber">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="form-group">
+            <span class="fill-remaining-space"></span>
+            <button mat-raised-button color="primary" matStepperNext type="submit" tabindex="0">
+              Next
+            </button>
+            <span class="fill-remaining-space"></span>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="loginForm">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Create Login</mat-card-title>
+          <mat-card-subtitle>
+            <mat-error *ngIf="error">{{error}}</mat-error>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Username" formControlName="username">
+                <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+                  Username is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="form-group">
+            <span class="fill-remaining-space"></span>
+            <button mat-raised-button color="primary" matStepperNext type="submit">
+              Register & Login
+            </button>
+            <span class="fill-remaining-space"></span>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

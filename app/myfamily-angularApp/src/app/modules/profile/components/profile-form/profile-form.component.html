@@ -1,0 +1,228 @@
+<mat-toolbar>
+  <span>{{formMode}}</span>
+  <span class="fill-remaining-space"></span>
+  <button mat-icon-button color="error" (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="profileForm" novalidate (ngSubmit)="onSubmit()" class="profile-card">
+  <mat-card>
+    <mat-card-header>
+    </mat-card-header>
+
+    <mat-card-content>
+      <input type="hidden" placeholder="id" formControlName="id" value="{{profileData.id}}">
+
+      <div *ngIf="formMode === 'Add Relative'" class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Relationship</mat-label>
+            <mat-select formControlName="relationship" value="{{profileData.relationship | titlecase}}" tabindex="-1">
+              <mat-option value="parent">Parent</mat-option>
+              <mat-option value="sibling">Sibling</mat-option>
+              <mat-option value="spouse">Spouse</mat-option>
+              <mat-option value="child">Child</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Firstname" formControlName="firstname" value="{{profileData.firstname | titlecase}}">
+            <mat-error *ngIf="profileForm.controls['firstname'].hasError('required')">
+              Firstname is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Surname" formControlName="surname" value="{{profileData.surname | titlecase}}">
+            <mat-error *ngIf="profileForm.controls['surname'].hasError('required')">
+              Surname is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Maiden Name" formControlName="maidenName" value="{{profileData.maidenName | titlecase}}">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="identityNumber" formControlName="identityNumber" value="{{profileData.identityNumber}}">
+            <mat-error *ngIf="profileForm.controls['identityNumber'].hasError('required')">
+              identityNumber is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="gender" value="{{profileData.gender}}">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-error *ngIf="profileForm.controls['gender'].hasError('required')">
+              Gender is <strong>required</strong>
+            </mat-error>
+          </mat-radio-group>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="emailAddress" formControlName="emailAddress" value="{{profileData.emailAddress | lowercase}}">
+            <mat-error *ngIf="profileForm.controls['emailAddress'].hasError('required')">
+              E-Mail address is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="profileForm.controls['emailAddress'].hasError('email')">
+                E-Mail address is invalid
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="cellphoneNumber" formControlName="cellphoneNumber" value="{{profileData.cellphoneNumber}}">
+            <mat-error *ngIf="profileForm.controls['cellphoneNumber'].hasError('required')">
+              cellphoneNumber is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="homeNumber" formControlName="homeNumber" value="{{profileData.homeNumber}}">
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="workNumber" formControlName="workNumber" value="{{profileData.workNumber}}">
+          </mat-form-field>
+        </div>
+      </div>
+      
+      </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<!-- <form [formGroup]="profileForm" novalidate (ngSubmit)="onSubmit()">
+  <input type="hidden" placeholder="id" formControlName="id" value="{{profileData.id}}">
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Firstname" formControlName="firstname" value="{{profileData.firstname | titlecase}}">
+        <mat-error *ngIf="profileForm.controls['firstname'].hasError('required')">
+          Firstname is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Surname" formControlName="surname" value="{{profileData.surname | titlecase}}">
+        <mat-error *ngIf="profileForm.controls['surname'].hasError('required')">
+          Surname is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Maiden Name" formControlName="maidenName" value="{{profileData.maidenName | titlecase}}">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="identityNumber" formControlName="identityNumber" value="{{profileData.identityNumber}}">
+        <mat-error *ngIf="profileForm.controls['identityNumber'].hasError('required')">
+          identityNumber is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-radio-group formControlName="gender" value="{{profileData.gender}}">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-error *ngIf="profileForm.controls['gender'].hasError('required')">
+          Gender is <strong>required</strong>
+        </mat-error>
+      </mat-radio-group>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="emailAddress" formControlName="emailAddress" value="{{profileData.emailAddress | lowercase}}">
+        <mat-error *ngIf="profileForm.controls['emailAddress'].hasError('required')">
+          E-Mail address is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="profileForm.controls['emailAddress'].hasError('email')">
+            E-Mail address is invalid
+          </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="cellphoneNumber" formControlName="cellphoneNumber" value="{{profileData.cellphoneNumber}}">
+        <mat-error *ngIf="profileForm.controls['cellphoneNumber'].hasError('required')">
+          cellphoneNumber is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="homeNumber" formControlName="homeNumber" value="{{profileData.homeNumber}}">
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="workNumber" formControlName="workNumber" value="{{profileData.workNumber}}">
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">Submit</button>
+</form> -->

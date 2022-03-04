@@ -1,0 +1,42 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title color="primary">Enter Login Credentials</mat-card-title>
+      <mat-card-subtitle>
+        <mat-error *ngIf="error">{{error}}</mat-error>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="text" matInput placeholder="username" formControlName="username">
+            <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+              Username is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="password" matInput placeholder="password" formControlName="password">
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="form-group">
+        <span class="fill-remaining-space"></span>
+        <button [disabled]="loading" mat-raised-button color="primary" type="submit" tabindex="0">
+          <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+          Login
+        </button>
+        <span class="fill-remaining-space"></span>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

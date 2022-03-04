@@ -1,0 +1,26 @@
+<mat-sidenav-container class="image">
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <!-- <button mat-button color="primary" [routerLink] = "'/'">{{title}}</button><br> -->
+    <button mat-icon-button matTooltip="Home" color="primary" [routerLink] = "'/'"><mat-icon>home</mat-icon></button><br>
+    <button mat-icon-button matTooltip="Family Tree" color="primary" [routerLink] = "'/familytree'"><mat-icon>account_tree</mat-icon></button><br>
+    <button mat-icon-button matTooltip="Family Calendar" color="primary" [routerLink] = "'/familycalendar'"><mat-icon>event</mat-icon></button><br>
+    <button mat-icon-button matTooltip="Family Health" color="primary" [routerLink] = "'/familyhealth'"><mat-icon>healing</mat-icon></button><br>
+    <button mat-icon-button matTooltip="Family Wealth" color="primary" [routerLink] = "'/familywealth'"><mat-icon>attach_money</mat-icon></button><br>
+    <button mat-icon-button matTooltip="Family Games" color="primary" [routerLink] = "'/familygames'"><mat-icon>games</mat-icon></button><br>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button matTooltip="Menu" (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+      <!-- <a mat-icon-button matTooltip="Home" [routerLink] = "'/'"><mat-icon>home</mat-icon></a> -->
+
+      <span class="fill-remaining-space"></span>
+      <span style="text-align: center">{{ title }}</span>
+      <span class="fill-remaining-space"></span>
+
+      <button *ngIf="!currentUser" mat-flat-button color="primary" [routerLink] = "'/register'">Register</button>
+      <button *ngIf="currentUser" mat-flat-button color="primary" (click)="logout()">Logout</button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

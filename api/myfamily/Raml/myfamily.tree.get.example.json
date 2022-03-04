@@ -1,0 +1,94 @@
+{
+    "personalDetails": {
+        "id": 1,
+        "firstname": "peter",
+        "surname": "parker",
+        "maidenName": "",
+        "identityNumber": "6208100015084",
+        "gender": "male",
+        "emailAddress": "peter.parker@gmail.com",
+        "cellphoneNumber": "+27845276776",
+        "homeNumber": null,
+        "workNumber": null
+    },
+    "parents": [
+        {
+            "id": 2,
+            "firstname": "henry",
+            "surname": "parker",
+            "maidenName": "",
+            "identityNumber": "2511080150084",
+            "gender": "male",
+            "emailAddress": "henry23@hotmail.com",
+            "cellphoneNumber": "+27845276776",
+            "homeNumber": "0315605800",
+            "workNumber": null
+        },
+        {
+            "id": 3,
+            "firstname": "mary",
+            "surname": "parker",
+            "maidenName": "",
+            "identityNumber": "2606095023083",
+            "gender": "male",
+            "emailAddress": "peter.parker@gmail.com",
+            "cellphoneNumber": "+27845276776",
+            "homeNumber": null,
+            "workNumber": null
+        }
+    ],
+    "siblings": [
+        {
+            "id": 6,
+            "firstname": "flash",
+            "surname": "thompson",
+            "maidenName": "",
+            "identityNumber": "8120084567087",
+            "gender": "male",
+            "emailAddress": "flash.thompson@gmail.com",
+            "cellphoneNumber": "+27725234098",
+            "homeNumber": null,
+            "workNumber": null
+        },
+        {
+            "id": 7,
+            "firstname": "eddie",
+            "surname": "brock",
+            "maidenName": "",
+            "identityNumber": "8215028654084",
+            "gender": "male",
+            "emailAddress": "eddie.brock@gmail.com",
+            "cellphoneNumber": "+27846387887",
+            "homeNumber": null,
+            "workNumber": null
+        }
+    ],
+    "spouse": [
+        {
+            "id": 4,
+            "firstname": "mary-jane",
+            "surname": "parker",
+            "maidenName": "watson",
+            "identityNumber": "6602050214082",
+            "gender": "male",
+            "emailAddress": "peter.parker@gmail.com",
+            "cellphoneNumber": "+27845276776",
+            "homeNumber": null,
+            "workNumber": null
+        }
+    ],
+    "children": [
+        {
+            "id": 5,
+            "firstname": "miles",
+            "surname": "parker",
+            "maidenName": "",
+            "identityNumber": "9029118764085",
+            "gender": "male",
+            "emailAddress": "peter.parker@gmail.com",
+            "cellphoneNumber": "+27845276776",
+            "homeNumber": null,
+            "workNumber": null
+        }
+    ]
+}

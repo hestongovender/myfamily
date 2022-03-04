@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyFamily.Api</name>
+    </assembly>
+    <members>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.CreateProfile(MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Add an individual's personal profile data
+            </summary>
+            <param name="profile">The individual's personal profile data (see PersonalProfile)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetAllProfiles">
+            <summary>
+            List personal profile data of all individuals
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetProfile(System.Int32)">
+            <summary>
+            Get an individual's personal profile data by profile id
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetProfileByIdentityNumber(System.String)">
+            <summary>
+            Get an individual's personal profile data by Identity number
+            </summary>
+            <param name="identityNumber">Identity number of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.UpdateProfile(MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Update an individual's personal profile data by profile id
+            </summary>
+            <param name="profile">The individual's updated personal profile data</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.DeleteProfile(System.Int32)">
+            <summary>
+            Remove an individual's personal profile data by profile id
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.CreateMyFamilyRelative(System.Int32,MyFamily.Api.Models.Relation,MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Add the personal profile data of an individual's relative
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <param name="relation">The relationship of the relative to the individual</param>
+            <param name="relativeProfile">The relative's personal profile data</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetMyFamilyRelative(System.Int32,MyFamily.Api.Models.Relation)">
+            <summary>
+            List the personal profile data of an individual's relatives
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <param name="relation">The relationship of the relatives to the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.DeleteRelationship(System.Int32,System.Int32)">
+            <summary>
+            Remove relative from an individual's relationships
+            </summary>
+            <param name="userId">The profile id of the individual</param>
+            <param name="relativeId">The profile id of the relative</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.CreateParent(System.Int32,MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Add the personal profile data of an individual's parents 
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <param name="personalProfile">The personal profile data of the individual's parents</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetParents(System.Int32)">
+            <summary>
+            List the personal profile data of an individual's parents
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.CreateSibling(System.Int32,MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Add the personal profile data of an individual's siblings
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <param name="personalProfile">The personal profile data of the individual's siblings</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetSiblings(System.Int32)">
+            <summary>
+            List the personal profile data of an individual's siblings
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.CreateSpouse(System.Int32,MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Add the personal profile data of an individual's spouse
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <param name="personalProfile">The personal profile data of the individual's spouse</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetSpouse(System.Int32)">
+            <summary>
+            List the personal profile data of an individual's spouse
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.CreateChild(System.Int32,MyFamily.Api.Models.PersonalProfile)">
+            <summary>
+            Add the personal profile data of an individual's children
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <param name="personalProfile">The personal profile data of the individual's children</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.ProfileController.GetChild(System.Int32)">
+            <summary>
+            List the personal profile data of an individual's children
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.UserController.CreateLogin(MyFamily.Api.Models.Login)">
+            <summary>
+            Add user login credentials
+            </summary>
+            <param name="loginCredentials">The user's login credentials (see Login)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Api.Controllers.UserController.AuthenticateLoginCredentials(MyFamily.Api.Models.Login)">
+            <summary>
+            Authenticate the user details
+            </summary>
+            <param name="loginCredentials">Login model with the username and password to be validated</param>
+            <returns>Null if the username and password do not exist, else returns the user's profile details</returns>
+        </member>
+        <member name="T:MyFamily.Controllers.TreeController">
+            <summary>
+            Family tree api
+            </summary>
+        </member>
+        <member name="M:MyFamily.Controllers.TreeController.CreateMyFamilyTree(MyFamily.Api.Models.FamilyTreeModel)">
+            <summary>
+            Add an individual's personal profile data and the profile data of the individual's family members
+            </summary>
+            <param name="familyTree">The individual's personal profile data and the profile data of the individual's family members (see FamilyTreeModel)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyFamily.Controllers.TreeController.GetMyFamilyTree(System.Int32)">
+            <summary>
+            List all the family tree members by an individual's profile id
+            </summary>
+            <param name="id">The profile id of the individual</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

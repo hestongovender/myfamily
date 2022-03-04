@@ -1,0 +1,21 @@
+.image {
+  background-color: #e5effc;
+  background-image:url('/assets/stick-family-transparent.png');
+  /* background-size: 10%; */
+  background-repeat: repeat;
+  background-position:50% 50%;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  min-height: 1000px
+}
+
+mat-sidenav {
+  background-color: #e5effc;
+  /* background-color: #673ab7; */
+  /* background-color: #241440; */
+  /* background-color: #8E52FF; */
+  width: auto;
+  min-height: 1000px
+}

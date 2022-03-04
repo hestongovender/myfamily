@@ -1,0 +1,117 @@
+version: '2.2'
+services:
+  # myfamilydb:
+  #   image: mysql
+  #   container-name: myfamilydb
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=Natal123
+  #     - MYSQL_DATABASE=myfamily
+  #     - MYSQL_USER=admin
+  #     - MYSQL_PASSWORD=admin
+  #   volumes:
+  #     - ./data:/var/lib/mysql
+  #   ports:
+  #     - 3306:3306
+  #   networks:
+  #     - myfamily-network
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: myfamily-es01
+    environment:
+      - node.name=myfamily-es01
+      - cluster.name=myfamily-es-docker-cluster
+      - discovery.seed_hosts=myfamily-es02,myfamily-es03
+      - cluster.initial_master_nodes=myfamily-es01,myfamily-es02,myfamily-es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - myfamily-data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - myfamily-network
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: myfamily-es02
+    environment:
+      - node.name=myfamily-es02
+      - cluster.name=myfamily-es-docker-cluster
+      - discovery.seed_hosts=myfamily-es01,myfamily-es03
+      - cluster.initial_master_nodes=myfamily-es01,myfamily-es02,myfamily-es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - myfamily-data02:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9201
+    networks:
+      - myfamily-network
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: myfamily-es03
+    environment:
+      - node.name=myfamily-es03
+      - cluster.name=myfamily-es-docker-cluster
+      - discovery.seed_hosts=myfamily-es01,myfamily-es02
+      - cluster.initial_master_nodes=myfamily-es01,myfamily-es02,myfamily-es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - myfamily-data03:/usr/share/elasticsearch/data
+    ports:
+      - 9202:9202
+    networks:
+      - myfamily-network
+
+  kib01:
+    image: docker.elastic.co/kibana/kibana:7.5.1
+    container_name: myfamily-kib01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://myfamily-es01:9200
+      ELASTICSEARCH_HOSTS: http://myfamily-es01:9200
+    networks:
+      - myfamily-network
+
+  apm-server01:
+    image: docker.elastic.co/apm/apm-server:7.5.1
+    container_name: myfamily-apm-server01
+    volumes:
+      - ./apm-server.docker.yml:/usr/share/apm-server/apm-server.yml
+    ports:
+      - 8200:8200
+    environment:
+      ELASTICSEARCH_URL: http://myfamily-es01:9200
+      ELASTICSEARCH_HOSTS: http://myfamily-es01:9200
+    networks:
+      - myfamily-network
+
+volumes:
+  myfamily-data00:
+    driver: local
+  myfamily-data01:
+    driver: local
+  myfamily-data02:
+    driver: local
+  myfamily-data03:
+    driver: local
+
+networks:
+  myfamily-network:
+    driver: bridge

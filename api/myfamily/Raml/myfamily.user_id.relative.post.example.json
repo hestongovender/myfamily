@@ -1,0 +1,13 @@
+{
+  "profileId": 1,
+  "relation": "spouse",
+  "personalProfile": {
+    "firstname": "mary-jane",
+    "surname": "parker",
+    "maidenName": "watson",
+    "identityNumber": "6602050214082",
+    "gender": "female",
+    "emailAddress": "mjwatson.parker@gmail.com",
+    "cellphoneNumber": "+27845276767"
+  } 
+}

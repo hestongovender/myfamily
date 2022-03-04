@@ -1,0 +1,54 @@
+{
+  "personalDetails": {
+    "firstname": "peter",
+    "surname": "parker",
+    "maidenName": "",
+    "identityNumber": "6208100015084",
+    "gender": "male",
+    "emailAddress": "peter.parker@gmail.com",
+    "cellphoneNumber": "+27845276776"
+  },
+  "parents": [
+    {
+      "firstname": "henry",
+      "surname": "parker",
+      "maidenName": "",
+      "identityNumber": "2510080150084",
+      "gender": "male",
+      "emailAddress": "henry23@hotmail.com",
+      "cellphoneNumber": "+27845276776"
+    },
+    {
+      "firstname": "mary",
+      "surname": "parker",
+      "maidenName": "",
+      "identityNumber": "2606095023083",
+      "gender": "male",
+      "emailAddress": "peter.parker@gmail.com",
+      "cellphoneNumber": "+27845276776"
+    }
+  ],
+  "siblings": [],
+  "spouse": [
+    {
+      "firstname": "mary-jane",
+      "surname": "parker",
+      "maidenName": "watson",
+      "identityNumber": "6602050214082",
+      "gender": "male",
+      "emailAddress": "peter.parker@gmail.com",
+      "cellphoneNumber": "+27845276776"
+    }
+  ],
+  "children": [
+    {
+      "firstname": "miles",
+      "surname": "parker",
+      "maidenName": "",
+      "identityNumber": "9029118764085",
+      "gender": "male",
+      "emailAddress": "peter.parker@gmail.com",
+      "cellphoneNumber": "+27845276776"
+    }
+  ]
+}

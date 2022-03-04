@@ -1,0 +1,122 @@
+<!-- <div *ngIf="!name; else forminfo">
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+    <h1>Reactive Form</h1>
+    <label>Name
+      <input type="text" formControlName="name">
+    </label>
+    <div *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+      Firstname is required
+    </div>
+
+    <label>Description
+      <textarea formControlName="description"></textarea>
+    </label>
+
+    <label for="validate">Minimum of 3 characters</label>
+    <input type="checkbox" name="validate" formControlName="validate" value="1"> On
+
+    <input type="submit" value="Submit Form" [disabled]="!rForm.valid">
+  </form>
+</div>
+
+<ng-template #forminfo>
+    <h1>{{ name }}</h1>
+    <p>{{ description }}</p>
+</ng-template> -->
+
+
+<profile-form *ngIf="profileIsEditable" [formTitle]="'Edit Profile'" [(profileData)]="profile" (profileFormSubmittedEvent)="formSubmitted($event)"></profile-form>
+<mat-card *ngIf="!profileIsEditable">
+
+  <mat-card-header>
+    <img mat-card-avatar *ngIf="profile.gender == 'male'" src="/assets/icon/user-male.png" alt="/assets/icon/user.png">
+    <img mat-card-avatar *ngIf="profile.gender == 'female'" src="/assets/icon/user-female.png" alt="/assets/icon/user.png">
+    <mat-card-title>{{profile.firstname | uppercase}} {{profile.surname | uppercase}}</mat-card-title>
+    <mat-card-subtitle *ngIf="profile.identityNumber">ID: <strong>{{profile.identityNumber}}</strong></mat-card-subtitle>
+    <mat-card-subtitle *ngIf="profile.maidenName">Maiden Name: <strong>{{profile.maidenName | titlecase}}</strong></mat-card-subtitle>
+  </mat-card-header>
+
+  <!-- <img mat-card-image *ngIf="!profile.avatar" src="/assets/icon/user.png" alt=""> -->
+  <img mat-card-image *ngIf="profile.avatar" src="profile.avatar" alt="">
+
+  <mat-card-content >
+    <mat-list *ngIf="!profileIsEditable; else EditProfile">
+      <mat-list-item><mat-icon>email</mat-icon> {{profile.emailAddress}}</mat-list-item>
+      <mat-list-item><mat-icon>phone</mat-icon> {{profile.cellphoneNumber}}</mat-list-item>
+      <mat-list-item><mat-icon>home</mat-icon> {{profile.homeNumber}}</mat-list-item>
+      <mat-list-item><mat-icon>work</mat-icon> {{profile.workNumber}}</mat-list-item>
+    </mat-list>
+    <ng-template #EditProfile>
+        <form>
+          <div>
+            <label for="firstname">Firstname</label>
+            <input
+              required
+              minlength="3"
+              ngModel
+              name="firstname"
+              #firstname="ngModel"
+              id="firstname"
+              type="text"
+              placeholder="Firstname"
+              value="{{profile.firstname | titlecase}}">
+            <div *ngIf="firstname.touched && !firstname.valid">
+              <div *ngIf="firstname.errors.required">
+                Firstname is required
+              </div>
+              <div *ngIf="firstname.errors.minlength">
+                Firstname cannot be less than {{firstname.errors.minlength.requiredLength}} characters
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="surname">Surname</label>
+            <input id="surname" type="text" placeholder="Surname" value="{{profile.surname | titlecase}}">
+          </div>
+
+          <div>
+            <label for="identityNumber">Identity Number</label>
+            <input id="identityNumber" type="text" placeholder="Identity Number" value="{{profile.identityNumber}}">
+          </div>
+
+          <div>
+            <label for="gender">Gender</label>
+            <input id="gender" type="text" placeholder="Gender" value="{{profile.gender | titlecase}}">
+          </div>
+
+          <div>
+            <label for="emailAddress"><mat-icon>email</mat-icon></label>
+            <input id="emailAddress" type="text" placeholder="example@email.address" value="{{profile.emailAddress}}">
+          </div>
+
+          <div>
+            <label for="cellphoneNumber"><mat-icon>phone</mat-icon></label>
+            <input id="cellphoneNumber" type="text" placeholder="0123456789" value="{{profile.cellphoneNumber}}">
+          </div>
+
+          <div>
+            <label for="homeNumber"><mat-icon>home</mat-icon></label>
+            <input id="homeNumber" type="text" placeholder="0123456789" value="{{profile.homeNumber}}">
+          </div>
+
+          <div>
+            <label for="workNumber"><mat-icon>work</mat-icon></label>
+            <input id="workNumber" type="text" placeholder="0123456789" value="{{profile.workNumber}}">
+          </div>
+
+          <div>
+            <button mat-button color="primary" (click)="updatePersonalProfile()">Submit</button>
+          </div>
+        </form>
+    </ng-template>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <!-- <button mat-icon-button color="primary" (click)="setEditMode(true)"><mat-icon>edit</mat-icon></button> -->
+    <button mat-icon-button matTooltip="Edit Details" color="primary" (click)="editProfile(profile)"><mat-icon>edit</mat-icon></button>
+    <div class="flex-spacer"></div>
+    <button *ngIf="profile.id != userId" mat-icon-button matTooltip="Remove Relative" color="error" (click)="deleteRelative()"><mat-icon>delete</mat-icon></button>
+  </mat-card-actions>
+
+</mat-card>

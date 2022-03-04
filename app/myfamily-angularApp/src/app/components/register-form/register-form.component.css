@@ -1,0 +1,29 @@
+.full-width {
+  width: 100%;
+}
+
+.mat-card.register-card {
+  min-width: 120px;
+  max-width: 50%;
+  margin: 20px auto;
+  background-color: #cfb9f5;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
